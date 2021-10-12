@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap");
+* {
+  font-size: 62.5%;
+  background-color: #e6e7ee;
+  margin: 0;
+  padding: 0;
+  text-decoration: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.container-nav {
+  box-shadow: 2px 2px 7px #c6c7cc, -2px -2px 7px #ffffff;
+  overflow: hidden;
+}
+.container-nav .my-nav {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+}
+.container-nav .my-nav .item-li {
+  float: left;
+}
+.container-nav .my-nav .item-li a {
+  display: block;
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  padding: 16px 18px;
+  text-decoration: none;
+  transition: 0.3s all ease-in-out;
+  font-weight: 500;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.container-nav .my-nav .item-li a:hover {
+  box-shadow: inset 2px 2px 7px #c6c7cc, -2px -2px 7px #ffffff;
+  color: #667ad1;
+}
+.container-nav .my-nav .item-li .active {
+  box-shadow: inset 2px 2px 7px #c6c7cc, -2px -2px 7px #ffffff;
+  color: #667ad1;
+}
+.container-nav .my-nav .logo {
+  float: right;
+}
+.container-nav .my-nav .logo a {
+  text-align: center;
+  display: block;
+  padding: 16px 18px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background-color: #667ad1;
+  text-decoration: none;
+  font-size: 3.2rem;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 100%;
+  transition: 1s;
+}
+.container-nav .my-nav .logo a:hover {
+  background-color: red;
+}
+
+#formulario {
+  font-size: 1.6rem;
+  margin-top: 2rem;
+}
+
+#request-list div {
+  font-size: 1.6rem;
+}
+#request-list div span {
+  font-size: 1.6rem;
+}
+
+.alerta {
+  font-size: 1.8rem;
+  box-shadow: 20px 20px 60px #c4c4ca, -20px -20px 60px #ffffff;
+}
+
+/*# sourceMappingURL=style.css.map */

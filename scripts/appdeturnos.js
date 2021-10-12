@@ -2,7 +2,8 @@
 
 
 class Request {
-    constructor(username, date) {
+    constructor(requestId, username, date) {
+        this.requestId = requestId;
         this.username = username;
         this.date = date;
     }
@@ -14,7 +15,8 @@ class UI {
         const element = document.createElement('div');
         element.innerHTML = `
             <div class="card text-center mb-4">
-                <div class="card-body card-1">
+                <div class="card-body card-1" name="${request.requestId}">
+                    <span>ID:</span> ${request.requestId}
                     <span>Username:</span> ${request.username}
                     <span>Request Date:</span> ${request.date}
                     <a href="#" class="btn-btn-danger" name="delete">Delete</a>
@@ -38,11 +40,19 @@ class UI {
     resetForm () {
         document.getElementById('formulario').reset();
     }
-    removeRequest (element) {
+    removeRequest (element, id) {
+        
         if (element.name === 'delete') {
             element.parentElement.parentElement.parentElement.remove()
             this.addAlert('Request Removed Successfully', 'info');
+            if (element.parentElement.name == id.requestId) {
+                let idList = id.findIndex(e => e.requestId == id.requestId)
+                id.splice(idList, 1);
+                this.id = JSON.stringify(id);
+                localStorage.setItem('turno', this.id)
+            }
         }
+        
     }
 }
 
@@ -85,11 +95,21 @@ function deshabilitar() {
     fechaInput.min = fechaDeshabilitar;
 }
 
+/*
+ID REQUEST
+*/
+
+function getRequestId() {
+    let lastRequestId = localStorage.getItem('requestId') || '0';
+    let newRequestId = JSON.parse(lastRequestId) + 1;
+    localStorage.setItem('requestId', JSON.stringify(newRequestId))
+    return newRequestId;
+}
 
 
 const submit = document.querySelector('#formulario');
 const requestList = []
-const newList = JSON.parse(localStorage.getItem("turno"))
+let newList = JSON.parse(localStorage.getItem("turno"))
 const nav = document.querySelector('.a')
 
 
@@ -98,8 +118,9 @@ submit.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = document.querySelector('#email').value;
     const date = document.querySelector('#fecha').value;
+    const requestId = getRequestId();
     const ui = new UI();
-    const req = new Request(email, date);
+    const req = new Request(requestId, email, date);
     if(email === '' || date === '' ) {
         return ui.addAlert('Complete Fields Please', 'danger');
     }
@@ -118,12 +139,14 @@ submit.addEventListener('submit', (e) => {
 
 document.getElementById('request-list').addEventListener( 'click' ,(e) => {
     const ui = new UI()
-    ui.removeRequest(e.target)
+    ui.removeRequest(e.target, newList)
 })
 
 document.addEventListener('DOMContentLoaded', () => {
     const ui = new UI();
-    newList.forEach((e) => {
-        ui.addRequest(e)
-    })
+    if (newList) {
+        newList.forEach((e) => {
+            ui.addRequest(e)
+        })
+    }
 })

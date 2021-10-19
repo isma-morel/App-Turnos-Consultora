@@ -15,8 +15,8 @@ class UI {
         const element = document.createElement('div');
         element.innerHTML = `
             <div class="card text-center mb-4">
-                <div class="card-body card-1" name="${request.requestId}">
-                    <span>ID:</span> ${request.requestId}
+                <div class="card-body card-1">
+                    <span>ID:</span>
                     <span>Username:</span> ${request.username}
                     <span>Request Date:</span> ${request.date}
                     <a href="#" class="btn-btn-danger" name="delete">Delete</a>
@@ -45,12 +45,6 @@ class UI {
         if (element.name === 'delete') {
             element.parentElement.parentElement.parentElement.remove()
             this.addAlert('Request Removed Successfully', 'info');
-            if (element.parentElement.name == id.requestId) {
-                let idList = id.findIndex(e => e.requestId == id.requestId)
-                id.splice(idList, 1);
-                this.id = JSON.stringify(id);
-                localStorage.setItem('turno', this.id)
-            }
         }
         
     }
@@ -99,12 +93,6 @@ function deshabilitar() {
 ID REQUEST
 */
 
-function getRequestId() {
-    let lastRequestId = localStorage.getItem('requestId') || '0';
-    let newRequestId = JSON.parse(lastRequestId) + 1;
-    localStorage.setItem('requestId', JSON.stringify(newRequestId))
-    return newRequestId;
-}
 
 
 const submit = document.querySelector('#formulario');
@@ -116,25 +104,25 @@ const nav = document.querySelector('.a')
 
 submit.addEventListener('submit', (e) => {
     e.preventDefault();
+    const ui = new UI();
     const email = document.querySelector('#email').value;
     const date = document.querySelector('#fecha').value;
-    const requestId = getRequestId();
-    const ui = new UI();
-    const req = new Request(requestId, email, date);
     if(email === '' || date === '' ) {
         return ui.addAlert('Complete Fields Please', 'danger');
-    }
-    ui.addRequest(req);
-    if (localStorage.getItem('turno') == null) {
-        requestList.push(req)
-        localStorage.setItem('turno', JSON.stringify(requestList))
     } else {
-        newList.push(req)
-        localStorage.setItem('turno', JSON.stringify(newList))
+        const req = new Request(email, date);
+        ui.addRequest(req);
+        if (localStorage.getItem('turno') == null) {
+            requestList.push(req)
+            localStorage.setItem('turno', JSON.stringify(requestList))
+        } else {
+            newList.push(req)
+            localStorage.setItem('turno', JSON.stringify(newList))
+        }
+        ui.resetForm();
+        ui.addAlert(`Has pedido un turno exitosamente para la fecha ${date}`, 'secondary')
+        console.log(requestList)
     }
-    ui.resetForm();
-    ui.addAlert(`Has pedido un turno exitosamente para la fecha ${date}`, 'secondary')
-    console.log(requestList)
 })
 
 document.getElementById('request-list').addEventListener( 'click' ,(e) => {

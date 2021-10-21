@@ -19,10 +19,18 @@
         </ul>
     </div>
     <section class="container-fluid seccion-turnos">
-        <div class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1">
+        <div id="insertAlert" class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1">
             <form id="formulario">
                 <input class="correo" type="email" id="email" placeholder="example@mail.com">
                 <input class="fecha" type="date" id="fecha" min="">
+                <select id="horario" >
+                    <option value="10:00" selected>10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                </select>
                 <input class="enviar" type="submit" id="submit" value="Submit">
             </form>
             <div id="request-list">
@@ -33,6 +41,8 @@
     <!--Scripts-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
-    <script src="scripts/appdeturnos.js"></script>
+    <script src="scripts/class.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script src="scripts/app.js"></script>
 </body>
 </html>

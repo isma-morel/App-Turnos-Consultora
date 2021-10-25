@@ -9,7 +9,7 @@ const minActual = () => {
     const year = fechaActual.getFullYear(); 
     //LE SUMO 1 PORQUE LOS MESES EMPIEZAN EN 0
     const month = fechaActual.getMonth() + 1; 
-    const day = fechaActual.getDate() +1;
+    const day = fechaActual.getDate() + 1;
     //VALIDACION PARA EVITAR ERRORES
     const number = [1,2,3,4,5,6,7,8,9]
     let fechaDeshabilitar;
@@ -65,10 +65,11 @@ const addPrint = (turno) => {
     const requestList = document.querySelector('#request-list');
     //CREO DIV
     const div1 = document.createElement('div');
+    div1.setAttribute('class', 'container-div')
     //CREO SEGMENTO DE HTML CON TODOS LOS DATOS DE LOS TURNOS
     //Y AGREGO UNA ID AL PADRE DE BUTTON PARA PROXIMAMENTE ELIMINAR DE LOCAL STORAGE
     div1.innerHTML = `
-            <div class="card text-center mb-4">
+            <div class="card text-center card-custom mb-4">
                 <div class="card-body card-1" id="${turno.turnoId}">
                     <span>ID:</span> ${turno.turnoId}
                     <span>Username:</span> ${turno.username}
@@ -98,7 +99,7 @@ const addAlert = (message, cssClass) => {
     container.insertBefore(div, div2);
     setTimeout(() => {
         document.querySelector('.alert').remove();
-    }, 2000);
+    }, 1500);
 }
 
 //REMOVER TURNO DEL DOM
@@ -133,7 +134,7 @@ const getIdTurno = () => {
     let newId;
     //VERIFICO QUE NO HAYA NINGUN TURNO EN STORAGE
     if (lista == null || lista.length == 0) {
-        let idTurno = -1;
+        let idTurno = 0;
         //LE SUMO +1 PARA QUE AL AGREGAR UN NUEVO TURNO
         //SU ID SE SUME Y NO SE REPITAN
         newId = idTurno + 1;
@@ -173,4 +174,17 @@ const storageRemove = (element) => {
     localStorage.setItem('turnos', JSON.stringify(lista))
     //VERIFICO
     console.log(lista)
+}
+
+
+//Hamburger 
+
+const hamburgerMenu = (asideBtn, aside) => {
+    const d = document;
+    d.addEventListener('click', (e) => {
+        if(e.target.matches(asideBtn) || e.target.matches(`${asideBtn} *`)) {
+            d.querySelector(aside).classList.toggle('is-active')
+            d.querySelector(asideBtn).classList.toggle('is-active')
+        }
+    })
 }

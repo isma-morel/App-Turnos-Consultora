@@ -1,9 +1,11 @@
 * {
-    font-size: 62.5%;
-    background-color: #e6e7ee;
+    font-family: $fontFamily;
     margin: 0;
     padding: 0;
-    text-decoration: 0;
+    text-decoration: none;
     list-style: none;
+    scroll-behavior: smooth;
+}
+html {
     overflow: hidden;
 }

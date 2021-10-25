@@ -16,6 +16,7 @@ const print = d.querySelector('#request-list');
 //AL CARGAR EL DOM
 document.addEventListener('DOMContentLoaded', () => {
     minActual();
+    hamburgerMenu('.btn-hmb', '.aside-btn')
     let listaTurnos;
     //VALIDO SI HAY UNA CLAVE EN STORAGE
     if(localStorage.getItem('turnos') != null) {

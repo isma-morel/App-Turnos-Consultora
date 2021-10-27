@@ -9,6 +9,18 @@ const horario = d.querySelector('#horario')
 const submit =  d.querySelector('#submit');
 const print = d.querySelector('#request-list');
 
+//JQUERY
+const div2 = $('.jquery-event')[0];
+const btn = $('#btn-query');
+
+const h2 = $('#h2-query')
+console.log(div2, btn)
+
+
+btn.click(() => {
+    $('body').append('<h2 id="h2-query">Hola</h2>')
+    
+})
 
 //EVENTOS
 
@@ -66,3 +78,6 @@ d.addEventListener('click', (e) => {
     //AL SELECCIONAR LO VALIDA Y BORRA LA MINI CARD
     removeTurno(e.target);
 })
+
+//JQUERY EVENT
+

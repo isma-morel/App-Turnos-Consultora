@@ -34,7 +34,7 @@ btn.click(() => {
 });
 
 $(".borrar").click(() => {
-  $(".h2-query").fadeOut(300);
+  $(".h2-query").fadeOut(300).delay(500).fadeIn(300);
 });
 
 //EVENTOS

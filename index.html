@@ -40,8 +40,8 @@
         </aside>
     </header>
     <section class="container-fluid seccion-turnos">
-        <div id="insertAlert" class="row row-cols-lg-2 row-cols-md-2 row-cols-sm-1">
-            <form id="formulario">
+        <div id="insertAlert" class="row">
+            <form id="formulario" class="col-lg-8 col-md-6 col-sm-12">
                 <input class="correo" type="email" id="email" placeholder="example@mail.com">
                 <input class="fecha" type="date" id="fecha" min="">
                 <select id="horario" >
@@ -52,18 +52,19 @@
                     <option value="16:00">16:00</option>
                     <option value="17:00">17:00</option>
                 </select>
+                <select id="tipo" >
+                    <option value="Estetica" selected>Estética</option>
+                    <option value="Odontologo">Odontologia</option>
+                    <option value="AFIP">AFIP</option>
+                    <option value="ANSES">ANSES</option>
+                </select>
                 <button class="enviar" id="submit">Pedir Turno</button>
             </form>
-            <div id="request-list">
+            <div id="request-list" class="col-4 col-md-6 col-sm-12">
             </div>
         </div>
     </section>
-    <div class="jquery-event">
-        <button id="btn-query">CLICKEAME :D</button>
-    </div>
     <!--Scripts-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
     <script src="/scripts/jquery-3.6.0.js"></script>
     <script src="scripts/class.js"></script>
     <script src="scripts/functions.js"></script>

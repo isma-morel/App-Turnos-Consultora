@@ -1,0 +1,12 @@
+.seccion-turnos {
+    margin: 10px 0;
+    .enviar {
+        transition: .3s all ease;
+        background-color: transparent;
+        border: 1px solid black;
+        &:hover {
+            color: white;
+            background-color: black;
+        }
+    }
+}

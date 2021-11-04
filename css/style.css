@@ -206,5 +206,21 @@ header .container-nav .container-logo:hover::after {
     display: flex;
   }
 }
+.alerta {
+  margin: 1rem 0;
+}
+
+.seccion-turnos {
+  margin: 10px 0;
+}
+.seccion-turnos .enviar {
+  transition: 0.3s all ease;
+  background-color: transparent;
+  border: 1px solid black;
+}
+.seccion-turnos .enviar:hover {
+  color: white;
+  background-color: black;
+}
 
 /*# sourceMappingURL=style.css.map */

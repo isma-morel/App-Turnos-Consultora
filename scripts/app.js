@@ -76,3 +76,16 @@ form.addEventListener("submit", (e) => {
 d.addEventListener("click", (e) => {
   removeTurno(e.target);
 });
+
+//Jquery
+
+const tittleQuery = $("#tittle-query");
+const textQuery = $("#text-query");
+
+tittleQuery.hide();
+textQuery.hide();
+
+$("document").ready(() => {
+  tittleQuery.slideDown(2000);
+  textQuery.slideDown(2000);
+});

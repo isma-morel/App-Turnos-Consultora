@@ -9,7 +9,7 @@
 }
 
 html {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 header {
@@ -221,6 +221,10 @@ header .container-nav .container-logo:hover::after {
 .seccion-turnos .enviar:hover {
   color: white;
   background-color: black;
+}
+.seccion-turnos #request-list {
+  width: 100%;
+  height: 100vh;
 }
 
 /*# sourceMappingURL=style.css.map */

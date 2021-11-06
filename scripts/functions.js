@@ -56,26 +56,35 @@ const storage = (turno) => {
 //HACIENDO PRINT
 
 const addPrint = (turno) => {
+  const src = validarPeticion(turno.tipo);
   const requestList = document.querySelector("#request-list");
-
-  const div1 = document.createElement("div");
-  div1.setAttribute("class", "container-div");
-
-  div1.innerHTML = `
-            <div class="card text-center card-custom mb-4 alerta">
-                <div class="card-body card-1" id="${turno.turnoId}">
-                    <img src=${turno.src} alt="tipo de turno"/>
-                    <span>ID:</span> ${turno.turnoId}
-                    <span>Para: ${turno.tipo}</span>
-                    <span>Username:</span> ${turno.username}
-                    <span>Fecha de turno:</span> ${turno.fecha}
-                    <span>Horario de turno:</span> ${turno.horario}
-                    <button class="btn-btn-danger" name="delete" id="btn-delete">Delete</button>
-                </div>
-            </div>
-        `;
-  //LO AGREGO COMO HIJO DEL DIV QUE CREE
-  requestList.appendChild(div1);
+  requestList.innerHTML += `
+    <div class="card col-3 my-2 mx-2" style="width: 18rem;">
+        <img src=${src} class="card-img-top" alt="tipo de turno">
+      <div class="card-body" id="${turno.turnoId}">
+        <h5 class="card-title">ID: ${turno.turnoId}</h5>
+        <h5 class="card-title">Tipo: ${turno.tipo}</h5>
+        <h5 class="card-title">Username: ${turno.username}</h5>
+        <h5 class="card-title">Fecha: ${turno.fecha}</h5>
+        <h5 class="card-title">Horario: ${turno.horario}</h5>
+        <a href="#" class="btn btn-primary" name="delete" id="btn-delete">Borrar</a>
+      </div>
+    </div>
+  
+  `;
+  //`
+  //           <div class="card text-center card-custom mb-4 alerta">
+  //               <div class="card-body card-1" id="${turno.turnoId}">
+  //                   <img src=${turno.src} alt="tipo de turno"/>
+  //                   <span>ID:</span> ${turno.turnoId}
+  //                   <span>Para: ${turno.tipo}</span>
+  //                   <span>Username:</span> ${turno.username}
+  //                   <span>Fecha de turno:</span> ${turno.fecha}
+  //                   <span>Horario de turno:</span> ${turno.horario}
+  //                   <button class="btn-btn-danger" name="delete" id="btn-delete">Delete</button>
+  //               </div>
+  //           </div>
+  //       `;
   //RESETEO EL FORMULARIO AL AGREGAR ELEMENTO
   document.querySelector("#formulario").reset();
 };
@@ -100,7 +109,7 @@ const addAlert = (message, cssClass) => {
 
 const removeTurno = (element) => {
   if (element.name === "delete") {
-    element.parentElement.parentElement.parentElement.remove();
+    element.parentElement.parentElement.remove();
 
     addAlert("Turno removido correctamente!", "info");
 
@@ -161,13 +170,20 @@ const hamburgerMenu = (asideBtn, aside) => {
 };
 
 //AJAX
-const setData = [];
-
-const getData = async () => {
+const peticion = async () => {
+  const getData = JSON.parse(localStorage.getItem("data"));
   await fetch("../mock/data.json")
     .then((response) => response.json())
-    .then((data) => setData.push(data));
-  console.log(setData);
+    .then(
+      (data) => getData || localStorage.setItem("data", JSON.stringify(data))
+    );
 };
 
-getData();
+//Validar entreda de src ajax para insertar imagen en card
+const validarPeticion = (inputValue) => {
+  const data = JSON.parse(localStorage.getItem("data"));
+  console.log(data);
+  const dataFiltrada = data.filter(({ type }) => type == inputValue);
+  const { src } = dataFiltrada[0];
+  return src;
+};

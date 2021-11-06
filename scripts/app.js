@@ -14,6 +14,7 @@ const tipo = d.querySelector("#tipo");
 
 //AL CARGAR EL DOM
 document.addEventListener("DOMContentLoaded", () => {
+  peticion();
   minActual();
   hamburgerMenu(".btn-hmb", ".aside-btn");
   let listaTurnos;

@@ -40,8 +40,8 @@
         </aside>
     </header>
     <section class="container-fluid seccion-turnos">
-        <div id="insertAlert" class="row">
-            <form id="formulario" class="col-lg-8 col-md-6 col-sm-12">
+        <div id="insertAlert" class="d-flex flex-column justify-content-center align-content-center">
+            <form id="formulario" class="d-flex justify-content-center">
                 <input class="correo" type="email" id="email" placeholder="example@mail.com">
                 <input class="fecha" type="date" id="fecha" min="">
                 <select id="horario" >
@@ -53,14 +53,14 @@
                     <option value="17:00">17:00</option>
                 </select>
                 <select id="tipo" >
-                    <option value="Estetica" selected>Estética</option>
-                    <option value="Odontologo">Odontologia</option>
-                    <option value="AFIP">AFIP</option>
-                    <option value="ANSES">ANSES</option>
+                    <option value="estetica" selected>Estética</option>
+                    <option value="odontologia">Odontologia</option>
+                    <option value="afip">AFIP</option>
+                    <option value="anses">ANSES</option>
                 </select>
                 <button class="enviar" id="submit">Pedir Turno</button>
             </form>
-            <div id="request-list" class="col-4 col-md-6 col-sm-12">
+            <div id="request-list" class="w-100 align-items-center py-2 mt-2 row justify-content-center">
             </div>
         </div>
     </section>

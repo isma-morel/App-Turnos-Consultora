@@ -101,7 +101,7 @@ const removeTurno = (element) => {
   if (element.name === "delete") {
     element.parentElement.parentElement.remove();
 
-    addAlert("Accion realizada", "Turno removido correctamente!", "success");
+    addAlert("Turno removido correctamente!", "", "success");
 
     storageRemove(element);
   }

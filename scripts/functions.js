@@ -91,18 +91,8 @@ const addPrint = (turno) => {
 
 //ALERTA 'TURNO AGREGADO CORRECTAMENTE'
 
-const addAlert = (message, cssClass) => {
-  //CREO Y AGREGO ATRIBUTOS AL ELEMENTO
-  const div = document.createElement("div");
-  div.setAttribute("class", `alert alerta alert-${cssClass}`);
-  div.appendChild(document.createTextNode(message));
-  //MUESTRO EN DOCUMENT
-  const container = document.querySelector(".seccion-turnos");
-  const div2 = document.querySelector("#insertAlert");
-  container.insertBefore(div, div2);
-  setTimeout(() => {
-    document.querySelector(".alert").remove();
-  }, 1500);
+const addAlert = (tittle, message, cssClass) => {
+  Swal.fire(tittle, message, cssClass);
 };
 
 //REMOVER TURNO DEL DOM
@@ -111,7 +101,7 @@ const removeTurno = (element) => {
   if (element.name === "delete") {
     element.parentElement.parentElement.remove();
 
-    addAlert("Turno removido correctamente!", "info");
+    addAlert("Accion realizada", "Turno removido correctamente!", "success");
 
     storageRemove(element);
   }
@@ -179,7 +169,7 @@ const peticion = async () => {
     );
 };
 
-//Validar entreda de src ajax para insertar imagen en card
+//Validar entrada de src ajax para insertar imagen en card
 const validarPeticion = (inputValue) => {
   const data = JSON.parse(localStorage.getItem("data"));
   console.log(data);

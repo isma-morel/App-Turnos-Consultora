@@ -44,7 +44,11 @@ form.addEventListener("submit", (e) => {
     horarioTurno === "" ||
     tipoTurno === ""
   ) {
-    return addAlert("Completa los Campos, Por Favor", "danger");
+    return addAlert(
+      "Accion no realizada",
+      "Completa los Campos, Por Favor",
+      "error"
+    );
   } else {
     const turnoId = getIdTurno();
     const turno = new Turno(
@@ -60,7 +64,8 @@ form.addEventListener("submit", (e) => {
     storage(turno);
 
     addAlert(
-      `Has pedido el turno correctamente para el ${fechaTurno} a las ${horarioTurno}`,
+      "Accion realizada",
+      `Turno pedido correctamente para el ${fechaTurno} a las ${horarioTurno}`,
       "success"
     );
   }

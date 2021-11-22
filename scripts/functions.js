@@ -72,19 +72,6 @@ const addPrint = (turno) => {
     </div>
   
   `;
-  //`
-  //           <div class="card text-center card-custom mb-4 alerta">
-  //               <div class="card-body card-1" id="${turno.turnoId}">
-  //                   <img src=${turno.src} alt="tipo de turno"/>
-  //                   <span>ID:</span> ${turno.turnoId}
-  //                   <span>Para: ${turno.tipo}</span>
-  //                   <span>Username:</span> ${turno.username}
-  //                   <span>Fecha de turno:</span> ${turno.fecha}
-  //                   <span>Horario de turno:</span> ${turno.horario}
-  //                   <button class="btn-btn-danger" name="delete" id="btn-delete">Delete</button>
-  //               </div>
-  //           </div>
-  //       `;
   //RESETEO EL FORMULARIO AL AGREGAR ELEMENTO
   document.querySelector("#formulario").reset();
 };
@@ -161,8 +148,8 @@ const hamburgerMenu = (asideBtn, aside) => {
 
 //AJAX
 const peticion = async () => {
-  const getData = JSON.parse(localStorage.getItem("data"));
-  await fetch("../mock/data.json")
+  const getData = JSON.parse(localStorage.getItem("data")); //SI NO HAY NADA le asigna a getdata NULL
+  await fetch("https://6186e9b4cd8530001765ac12.mockapi.io/products")
     .then((response) => response.json())
     .then(
       (data) => getData || localStorage.setItem("data", JSON.stringify(data))
